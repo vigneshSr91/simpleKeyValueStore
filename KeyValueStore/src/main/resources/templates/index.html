@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Value Store</title>
+</head>
+<body>
+<div align="center">
+  <h1>Key Value Records</h1>
+  <a href="/new">Enter New Entry</a>
+  <br/><br/>
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Value</th>
+      <th>expires_at</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="kv : ${kvList}">
+      <td th:text="${kv.id}">ID</td>
+      <td th:text="${kv.value}">Value</td>
+      <td th:text="${kv.expires_at}">expires_at</td>
+      <var editUrlPrefix = "/@{/edit/" />
+      <var deleteUrlPrefix = "/@{/delete/" />
+      <td>
+        <a th:href="'/edit/' + ${kv.id}">Edit</a>
+
+        <a th:href="'/delete/' + ${kv.id}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
